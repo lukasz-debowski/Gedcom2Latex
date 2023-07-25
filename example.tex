@@ -1,0 +1,52 @@
+\documentclass[landscape]{article}
+\usepackage[paperwidth=80cm,paperheight=20cm,margin=0cm]{geometry}
+\usepackage[OT4]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[all]{genealogytree}
+
+% Please read the manual of the genealogytree.sty Latex package.
+
+
+\begin{document}
+
+\newcommand{\mytree}[2]{
+\clearpage
+  
+\centering
+
+\null
+
+\vfill
+
+{\Large\bf #1}
+
+\vfill
+
+\begin{tikzpicture}
+\genealogytree[
+ processing=database,
+ database format=medium,
+ date format=d month yyyy,
+ node size=3cm,
+ level size=1.5cm,
+ level distance=7mm,
+ label options={fill=white,node font=\footnotesize},
+ edges={rounded,foreground={line width=2pt}},
+ box={fit basedim=9pt,boxsep=2pt,segmentation style=solid,
+   halign=flush left,valign=center,\gtrDBsex
+ }
+]{input{input_files/#2}}
+\end{tikzpicture}
+
+\vfill
+
+\null
+}
+
+\mytree{Ancestors and descendants of Henry Tudor}{Henry_Tudor.tex}
+
+\mytree{Descendants of Peter de Luxembourg}{Peter_de_Luxembourg.tex}
+
+\mytree{Ancestors of George Washington}{George_Washington.tex}
+\end{document}
+
